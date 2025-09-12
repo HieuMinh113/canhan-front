@@ -54,7 +54,7 @@ export default {
         return;
       }
       try {
-        const response = await apiClient.post('http://127.0.0.1:8000/api/login', {
+        const response = await apiClient.post('/api/login', {
           email: this.email,
           password: this.password,
         });
