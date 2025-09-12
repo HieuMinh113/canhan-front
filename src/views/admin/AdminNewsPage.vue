@@ -64,7 +64,7 @@ export default {
   methods: {
     async fetchNews() {
       try {
-        const res = await apiClient.get('http://localhost:8000/api/news');
+        const res = await apiClient.get('/api/news');
         this.newsList = res.data;
       } catch (error) {
         console.error('Lỗi khi tải tin tức:', error);
@@ -100,7 +100,7 @@ export default {
       formData.append('image', file);
 
       try {
-        const response = await apiClient.post('http://localhost:8000/api/uploadImage', formData, {
+        const response = await apiClient.post('/api/uploadImage', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         this.form.previewImage = response.data.url;
@@ -125,11 +125,11 @@ export default {
       try {
         if (this.isEdit) {
           const id = this.newsList[this.editIndex].id;
-          const res = await apiClient.put(`http://localhost:8000/api/news/${id}`, newsData);
+          const res = await apiClient.put(`/api/news/${id}`, newsData);
           this.newsList[this.editIndex] = res.data;
           alert('Cập nhật tin tức thành công!');
         } else {
-          const res = await apiClient.post('http://localhost:8000/api/news', newsData);
+          const res = await apiClient.post('/api/news', newsData);
           this.newsList.unshift(res.data);
           alert('Thêm tin tức thành công!');
         }
@@ -155,7 +155,7 @@ export default {
       if (!confirm('Bạn có chắc muốn xóa tin này?')) return;
       const news = this.newsList[index];
       try {
-        await apiClient.delete(`http://localhost:8000/api/news/${news.id}`);
+        await apiClient.delete(`/api/news/${news.id}`);
         this.newsList.splice(index, 1);
         alert('Xóa tin tức thành công!');
       } catch (error) {

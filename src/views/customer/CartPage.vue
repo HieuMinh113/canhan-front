@@ -259,7 +259,7 @@ async function checkout() {
 
   try {
     if (checkoutForm.payment_method === 'momo') {
-      const res = await fetch("http://localhost:8000/api/momo-payment", {
+      const res = await fetch("/api/momo-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

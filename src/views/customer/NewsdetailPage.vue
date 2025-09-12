@@ -30,7 +30,7 @@ export default {
   methods: {
     fetchNewsDetail() {
       const id = this.$route.params.id;
-      apiClient.get(`http://localhost:8000/api/news/${id}`)
+      apiClient.get(`/api/news/${id}`)
         .then(res => {
           this.news = {
             image: res.data.image,

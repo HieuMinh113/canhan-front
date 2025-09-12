@@ -144,7 +144,7 @@ const drawChart = () => {
 
 const fetchDataAndDraw = async () => {
   try {
-    const res = await fetch('http://localhost:8000/api/dashboard')
+    const res = await fetch('/api/dashboard')
     const data1 = await res.json()
     const chartData = [
       ['Type', 'Total'],

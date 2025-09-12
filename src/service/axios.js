@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Tạo instance axios
 const apiClient = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://canhan-back-production.up.railway.app",
   timeout: 10000,
   withCredentials: true,
   headers: {

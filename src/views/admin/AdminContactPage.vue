@@ -38,7 +38,7 @@ export default {
   },
   async created() {
     try {
-      const res = await apiClient.get('http://localhost:8000/api/contact');
+      const res = await apiClient.get('/api/contact');
       this.contacts = res.data;
     } catch (err) {
       console.error("Lỗi khi tải dữ liệu liên hệ:", err);
@@ -54,7 +54,7 @@ export default {
       if (!confirm('Bạn có chắc muốn xác nhận tin nhắn này?')) return;
       const contact = this.contacts[index];
       try {
-        await apiClient.delete(`http://localhost:8000/api/contact/${contact.id}`);
+        await apiClient.delete(`/api/contact/${contact.id}`);
         this.contacts.splice(index, 1);
         alert('Xác nhận liên hệ thành công!');
       } catch (error) {

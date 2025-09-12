@@ -55,7 +55,7 @@ export default {
   },
   mounted() {
     const id = this.$route.params.id;
-    fetch(`http://localhost:8000/api/hotel/${id}`)
+    fetch(`/api/hotel/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data && !data.message) {
@@ -93,7 +93,7 @@ export default {
           check_out_time: this.bookingroom.check_out_time,
         };
 
-        const response = await fetch("http://localhost:8000/api/bookinghotel", {
+        const response = await fetch("/api/bookinghotel", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

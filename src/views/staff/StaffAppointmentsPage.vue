@@ -56,10 +56,10 @@ export default {
   async created(){
   const id = this.$route.params.id;
   try {
-    const staffRes = await apiClient.get(`http://localhost:8000/api/staff/${id}`);
+    const staffRes = await apiClient.get(`/api/staff/${id}`);
     this.staff = staffRes.data;
 
-    const appointmentsRes = await apiClient.get(`http://localhost:8000/api/staff/${id}/appointment`);
+    const appointmentsRes = await apiClient.get(`/api/staff/${id}/appointment`);
     this.appointments = appointmentsRes.data;
 
   } catch (err) {
@@ -72,7 +72,7 @@ methods:{
       if (!confirm('Bạn có chắc muốn xac nhan tin này?')) return;
       const appointment = this.appointments[index];
       try {
-        await apiClient.put(`http://localhost:8000/api/appointment/${appointment.id}`,{
+        await apiClient.put(`/api/appointment/${appointment.id}`,{
           handled:true
         });
         this.appointments[index].handled = true;

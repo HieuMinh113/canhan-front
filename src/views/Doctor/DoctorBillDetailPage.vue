@@ -93,7 +93,7 @@ export default {
   async created() {
     const id = this.$route.params.id;
     try {
-      const res = await apiClient.get(`http://localhost:8000/api/bills/${id}`);
+      const res = await apiClient.get(`/api/bills/${id}`);
       this.bill = res.data;
     } catch (err) {
       console.error(err);

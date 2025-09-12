@@ -42,7 +42,7 @@ export const useCartStore = defineStore('cart', {
         const url = this.isLoggedIn
           ? 'api/cart/getDB'
           : '/cart/getsession'
-        // await apiClient.get('http://localhost:8000/sanctum/csrf-cookie')
+        // await apiClient.get('/sanctum/csrf-cookie')
         const response = await apiClient.get(url)
         this.items = this.isLoggedIn ? response.data : Object.values(response.data)
       } catch (error) {
@@ -79,7 +79,7 @@ export const useCartStore = defineStore('cart', {
       }
       const url = this.isLoggedIn ? 'api/cart/addDB' : '/cart/addsession'
       try {
-        await apiClient.get('http://localhost:8000/sanctum/csrf-cookie')
+        await apiClient.get('/sanctum/csrf-cookie')
         await apiClient.post(url, {
           product_id: productId,
           pet_id: petId,
@@ -116,7 +116,7 @@ export const useCartStore = defineStore('cart', {
       const url = this.isLoggedIn
         ? 'api/cart/updateDB'
         : '/cart/updatesession'
-      await apiClient.get('http://localhost:8000/sanctum/csrf-cookie')
+      await apiClient.get('/sanctum/csrf-cookie')
       await apiClient.put(url, { product_id, pet_id, quantity })
       await this.fetchCart()
     },
@@ -124,7 +124,7 @@ export const useCartStore = defineStore('cart', {
       const url = this.isLoggedIn
         ? 'api/cart/deleteDB'
         : '/cart/deletesession'
-      // await apiClient.get('http://localhost:8000/sanctum/csrf-cookie')
+      // await apiClient.get('/sanctum/csrf-cookie')
       await apiClient.delete(url, { data: { product_id,pet_id } })
       await this.fetchCart()
     },
@@ -174,7 +174,7 @@ export const useCartStore = defineStore('cart', {
       const url = this.isLoggedIn
         ? 'api/cart/DB/clear'
         : '/cart/session/clear'
-      // await apiClient.get('http://localhost:8000/sanctum/csrf-cookie')
+      // await apiClient.get('/sanctum/csrf-cookie')
       await apiClient.delete(url)
       this.items = []
     },

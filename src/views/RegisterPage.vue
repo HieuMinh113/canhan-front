@@ -39,7 +39,7 @@ const handleRegister = async () => {
   }
 
   try {
-    const response = await apiClient.post('http://localhost:8000/api/register', {
+    const response = await apiClient.post('/api/register', {
       name: name.value,
       email: email.value,
       password: password.value,

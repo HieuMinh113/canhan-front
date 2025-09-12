@@ -60,7 +60,7 @@ export default {
       this.isMenuOpen = !this.isMenuOpen;
     },
     logout() {
-      apiClient.post('http://localhost:8000/api/logout', {}, {
+      apiClient.post('/api/logout', {}, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('auth_token')}`,
         }

@@ -80,7 +80,7 @@ export default {
   methods: {
     async submitAppointment() {
       try {
-        const response = await fetch("http://localhost:8000/api/appointment", {
+        const response = await fetch("/api/appointment", {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -132,10 +132,10 @@ export default {
   },
   mounted() {
     this.loadHistory();
-    fetch("http://localhost:8000/api/staff-appointment")
+    fetch("/api/staff-appointment")
       .then(res => res.json())
       .then(data => this.staffList = data)
-      .then(() => fetch("http://localhost:8000/api/service"))
+      .then(() => fetch("/api/service"))
       .then(res => res.json())
       .then(data => this.services = data)
       .catch(err => console.error("Lỗi tải staff:", err));

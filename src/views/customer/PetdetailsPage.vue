@@ -39,7 +39,7 @@ export default {
   },
   created() {
     const id = this.$route.params.id
-    apiClient.get(`http://localhost:8000/api/pet/${id}`)
+    apiClient.get(`/api/pet/${id}`)
       .then(res => this.pet = res.data)
       .catch(err => console.error(err))
   },

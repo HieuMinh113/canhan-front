@@ -140,7 +140,7 @@ export default {
   formData.append('image', selectedFile);
 
   try {
-    const response = await apiClient.post('http://localhost:8000/api/uploadImage', formData, {
+    const response = await apiClient.post('/api/uploadImage', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -157,7 +157,7 @@ export default {
   },
   async fetchproducts(){
     try {
-      const response = await apiClient.get('http://localhost:8000/api/products');
+      const response = await apiClient.get('/api/products');
       this.products=response.data;
     } catch (error) {
       console.error('loi khi tai san pham',error);
@@ -167,7 +167,7 @@ export default {
     clearTimeout(this.searchTimeout);
     this.searchTimeout=setTimeout(async()=>{
       try {
-        const res = await apiClient.get('http://localhost:8000/api/products',{
+        const res = await apiClient.get('/api/products',{
           params:{
             search:this.searchQuery,
           }
@@ -196,10 +196,10 @@ export default {
     try {
       if(this.isEdit){
         const id = this.products[this.editIndex].id;
-        const res = await apiClient.put(`http://localhost:8000/api/products/${id}`, newProduct);
+        const res = await apiClient.put(`/api/products/${id}`, newProduct);
         this.products[this.editIndex]=res.data;
       }else{
-        const res = await apiClient.post('http://localhost:8000/api/products',newProduct);
+        const res = await apiClient.post('/api/products',newProduct);
         this.products.push(res.data);
       }
       this.closeModal();
@@ -228,7 +228,7 @@ export default {
     if (!confirm('Bạn có chắc muốn xoá sản phẩm này?')) return;
     const product = this.products[index];
     try {
-      await apiClient.delete(`http://localhost:8000/api/products/${product.id}`);
+      await apiClient.delete(`/api/products/${product.id}`);
       this.products.splice(index, 1);
     } catch (error) {
       console.error('Xoá thất bại:', error);

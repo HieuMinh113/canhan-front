@@ -36,7 +36,7 @@ export default {
     };
   },
   created() {
-    apiClient.get('http://localhost:8000/api/hotel') 
+    apiClient.get('/api/hotel') 
       .then(res => this.rooms = res.data)
       .catch(err => console.error(err));
   },

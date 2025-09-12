@@ -45,7 +45,7 @@ export default {
   },
   async created() {
     try {
-      const res = await apiClient.get('http://localhost:8000/api/feedback');
+      const res = await apiClient.get('/api/feedback');
       this.feedbacks = res.data;
     } catch (err) {
       console.error("Lỗi khi tải dữ liệu phản hồi:", err);
@@ -61,7 +61,7 @@ export default {
       if (!confirm('Bạn có chắc muốn xác nhận phản hồi này?')) return;
       const feedback = this.feedbacks[index];
       try {
-        await apiClient.put(`http://localhost:8000/api/feedback/${feedback.id}`, {
+        await apiClient.put(`/api/feedback/${feedback.id}`, {
           handled: true
         });
         feedback.handled = true;

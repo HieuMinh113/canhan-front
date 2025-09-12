@@ -43,10 +43,10 @@ export default {
   },
   methods: {
     loginWithGoogle() {
-      window.location.href = 'http://localhost:8000/auth/google/redirect';
+      window.location.href = '/auth/google/redirect';
     },
     loginWithGithub() {
-      window.location.href = 'http://localhost:8000/auth/github/redirect';
+      window.location.href = '/auth/github/redirect';
     },
     async handleLogin() {
       if (!this.email || !this.password) {
@@ -64,7 +64,7 @@ export default {
         localStorage.setItem('user_role', user.role);
         localStorage.setItem('user_id', user.id);
         window.dispatchEvent(new Event('auth-changed'));
-        await apiClient.post('http://localhost:8000/api/cart/syn');
+        await apiClient.post('/api/cart/syn');
 
         alert("Đăng nhập thành công");
         switch (user.role) {

@@ -133,7 +133,7 @@ export default {
       const formData = new FormData();
       formData.append("image", file);
       try {
-        const res = await apiClient.post("http://localhost:8000/api/petuploadImage", formData, {
+        const res = await apiClient.post("/api/petuploadImage", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         this.form.previewImage = res.data.url;
@@ -151,7 +151,7 @@ export default {
     },
     async fetchPets() {
       try {
-        const res = await apiClient.get("http://localhost:8000/api/pet");
+        const res = await apiClient.get("/api/pet");
         this.pets = res.data;
       } catch (err) {
         console.error("Lỗi khi tải thú cưng:", err);
@@ -162,7 +162,7 @@ export default {
       clearTimeout(this.searchTimeout);
       this.searchTimeout = setTimeout(async () => {
         try {
-          const res = await apiClient.get("http://localhost:8000/api/pet", {
+          const res = await apiClient.get("/api/pet", {
             params: { search: this.searchQuery },
           });
           this.pets = res.data;
@@ -190,11 +190,11 @@ export default {
       try {
         if (this.isEdit) {
           const id = this.pets[this.editIndex].id;
-          const res = await apiClient.put(`http://localhost:8000/api/pet/${id}`, newPet);
+          const res = await apiClient.put(`/api/pet/${id}`, newPet);
           this.pets[this.editIndex] = res.data;
           alert('Cập nhật thú cưng thành công!');
         } else {
-          const res = await apiClient.post("http://localhost:8000/api/pet", newPet);
+          const res = await apiClient.post("/api/pet", newPet);
           this.pets.push(res.data);
           alert('Thêm thú cưng thành công!');
         }
@@ -218,7 +218,7 @@ export default {
       if (!confirm("Bạn có chắc muốn xóa thú cưng này?")) return;
       try {
         const pet = this.pets[index];
-        await apiClient.delete(`http://localhost:8000/api/pet/${pet.id}`);
+        await apiClient.delete(`/api/pet/${pet.id}`);
         this.pets.splice(index, 1);
         alert('Xóa thú cưng thành công!');
       } catch (err) {

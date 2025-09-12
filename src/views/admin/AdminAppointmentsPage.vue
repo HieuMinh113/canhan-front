@@ -70,7 +70,7 @@ export default {
         if (this.filter.handled !== '') {
           params.handled = this.filter.handled;
         }
-        const res = await apiClient.get('http://localhost:8000/api/appointment', {
+        const res = await apiClient.get('/api/appointment', {
           params
         });
         this.appointments = res.data;

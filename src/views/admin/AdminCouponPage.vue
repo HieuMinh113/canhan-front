@@ -68,7 +68,7 @@ const coupons = ref([]);
 const form = ref({ id: null, code: '', percent: 0, usage_limit: 0 });
 const isEditing = ref(false);
 
-const API_BASE = 'http://localhost:8000/api/coupon';
+const API_BASE = '/api/coupon';
 
 // Lấy danh sách mã giảm giá
 async function fetchCoupon() {

@@ -63,7 +63,7 @@ export default {
     },
     logout() {
       const token = localStorage.getItem('auth_token');
-      apiClient.post('http://localhost:8000/api/logout', {}, {
+      apiClient.post('/api/logout', {}, {
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: 'application/json',

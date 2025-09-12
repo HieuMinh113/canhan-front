@@ -98,7 +98,7 @@ export default {
       const formData = new FormData();
       formData.append('image', selectedFile);
       try {
-        const response = await apiClient.post('http://localhost:8000/api/hoteluploadImage', formData, {
+        const response = await apiClient.post('/api/hoteluploadImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -118,7 +118,7 @@ export default {
     },
     async fetchRooms() {
       try {
-        const response = await apiClient.get('http://localhost:8000/api/hotel');
+        const response = await apiClient.get('/api/hotel');
         this.rooms = response.data;
       } catch (error) {
         console.error('Lỗi khi tải danh sách phòng:', error);
@@ -142,11 +142,11 @@ export default {
       try {
         if (this.isEdit) {
           const id = this.rooms[this.editIndex].id;
-          const res = await apiClient.put(`http://localhost:8000/api/hotel/${id}`, roomData);
+          const res = await apiClient.put(`/api/hotel/${id}`, roomData);
           this.rooms[this.editIndex] = res.data;
           alert('Cập nhật phòng thành công!');
         } else {
-          const res = await apiClient.post('http://localhost:8000/api/hotel', roomData);
+          const res = await apiClient.post('/api/hotel', roomData);
           this.rooms.push(res.data);
           alert('Thêm phòng thành công!');
         }
@@ -174,7 +174,7 @@ export default {
       if (!confirm('Bạn có chắc muốn xóa phòng này?')) return;
       const room = this.rooms[index];
       try {
-        await apiClient.delete(`http://localhost:8000/api/hotel/${room.id}`);
+        await apiClient.delete(`/api/hotel/${room.id}`);
         this.rooms.splice(index, 1);
         alert('Xóa phòng thành công!');
       } catch (error) {

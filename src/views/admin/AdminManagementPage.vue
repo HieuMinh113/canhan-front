@@ -105,7 +105,7 @@ export default {
         if (this.filter.role) {
           params.role = this.filter.role;
         }
-        const res = await apiClient.get('http://localhost:8000/api/users', {
+        const res = await apiClient.get('/api/users', {
           params,
           headers: {
             Authorization: `Bearer ${localStorage.getItem('auth_token')}`
@@ -133,10 +133,10 @@ export default {
           if (!updateData.password) {
             delete updateData.password; 
           }
-          await apiClient.put(`http://localhost:8000/api/users/${this.form.id}`, updateData, { headers });
+          await apiClient.put(`/api/users/${this.form.id}`, updateData, { headers });
           alert('Cập nhật thành công');
         } else {
-          await apiClient.post('http://localhost:8000/api/users', this.form, { headers });
+          await apiClient.post('/api/users', this.form, { headers });
           alert('Thêm mới thành công');
         }
 
@@ -165,7 +165,7 @@ export default {
       if (!confirm(`Xác nhận xóa người dùng "${user.name}"?`)) return;
 
       try {
-        await apiClient.delete(`http://localhost:8000/api/users/${user.id}`, {
+        await apiClient.delete(`/api/users/${user.id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('auth_token')}`
           }

@@ -72,7 +72,7 @@ export default {
         if (this.filter.category) {
           params.category = this.filter.category;
         }
-        const res = await apiClient.get('http://localhost:8000/api/products', {
+        const res = await apiClient.get('/api/products', {
           params
         });
         this.products = res.data;

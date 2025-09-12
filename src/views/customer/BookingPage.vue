@@ -79,7 +79,7 @@ export default {
   methods: {
     async submitBooking() {
       try {
-        const response = await fetch('http://localhost:8000/api/booking', {
+        const response = await fetch('/api/booking', {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -139,7 +139,7 @@ export default {
   },
   mounted() {
     this.loadHistory();
-    fetch("http://localhost:8000/api/doctor-booking")
+    fetch("/api/doctor-booking")
       .then(res => res.json())
       .then(data => this.doctorList = data)
       .catch(err => console.error("Lỗi tải doctor:", err));

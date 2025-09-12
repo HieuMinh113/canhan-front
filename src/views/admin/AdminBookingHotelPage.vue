@@ -85,7 +85,7 @@ export default {
       if (this.filter.handled !== '') params.handled = this.filter.handled;
 
       try {
-        const res = await apiClient.get('http://localhost:8000/api/bookinghotel', { params });
+        const res = await apiClient.get('/api/bookinghotel', { params });
         this.bookinghotels = res.data;
       } catch (error) {
         console.error('Lỗi khi tải danh sách đặt lịch:', error);

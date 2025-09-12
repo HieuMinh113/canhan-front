@@ -23,7 +23,7 @@ export default {
     };
   },
   created() {
-    axios.get('http://localhost:8000/api/news')
+    axios.get('/api/news')
       .then(res => this.newsList = res.data)
       .catch(err => console.error(err));
   },

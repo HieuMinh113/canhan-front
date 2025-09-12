@@ -70,7 +70,7 @@ const services = ref([]);
 const form = ref({ id: null, name: '', price: 0, type: '' });
 const isEditing = ref(false);
 
-const API_BASE = 'http://localhost:8000/api/service';
+const API_BASE = '/api/service';
 
 // Format tiền VNĐ
 function formatPrice(value) {

@@ -62,10 +62,10 @@ export default {
   async created() {
     const id = this.$route.params.id;
     try {
-      const staffRes = await apiClient.get(`http://localhost:8000/api/doctor/${id}`);
+      const staffRes = await apiClient.get(`/api/doctor/${id}`);
       this.doctor = staffRes.data;
 
-      const appointmentsRes = await apiClient.get(`http://localhost:8000/api/doctor/${id}/booking`);
+      const appointmentsRes = await apiClient.get(`/api/doctor/${id}/booking`);
       this.bookings = appointmentsRes.data;
     } catch (err) {
       console.log(err);
@@ -77,7 +77,7 @@ export default {
       if (!confirm('Bạn có chắc muốn xác nhận lịch hẹn này?')) return;
       const booking = this.bookings[index];
       try {
-        await apiClient.put(`http://localhost:8000/api/booking/${booking.id}`, {
+        await apiClient.put(`/api/booking/${booking.id}`, {
           handled: true
         });
         this.bookings[index].handled = true;

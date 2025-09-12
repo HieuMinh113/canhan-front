@@ -55,7 +55,7 @@ export default {
   methods: {
     async fetchBookingHotel() {
       try {
-        const res = await apiClient.get('http://localhost:8000/api/bookinghotel');
+        const res = await apiClient.get('/api/bookinghotel');
         this.bookinghotels = res.data;
       } catch (error) {
         console.error('Lỗi khi tải danh sách:', error);
@@ -66,7 +66,7 @@ export default {
       if (!confirm('Bạn có chắc muốn xác nhận lịch đặt này?')) return;
       const bookinghotel = this.bookinghotels[index];
       try {
-        await apiClient.put(`http://localhost:8000/api/bookinghotel/${bookinghotel.id}`, {
+        await apiClient.put(`/api/bookinghotel/${bookinghotel.id}`, {
           handled: true
         });
         this.bookinghotels[index].handled = true;

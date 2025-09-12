@@ -44,7 +44,7 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const response = await fetch('http://localhost:8000/api/contact', {
+        const response = await fetch('/api/contact', {
           method: "post",
           headers: {
             "Content-Type": "application/json",

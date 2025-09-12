@@ -113,7 +113,7 @@ export default {
   methods: {
     async fetchUser() {
       try {
-        const res = await apiClient.get("http://localhost:8000/api/user");
+        const res = await apiClient.get("/api/user");
 
         const users = Array.isArray(res.data) ? res.data : res.data.data;
 
@@ -138,7 +138,7 @@ export default {
             : this.form.staff_id;
 
         // Gửi API
-        await apiClient.post("http://localhost:8000/api/feedback", this.form, {
+        await apiClient.post("/api/feedback", this.form, {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",

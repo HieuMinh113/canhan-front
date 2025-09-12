@@ -421,7 +421,7 @@ export default {
       clearTimeout(this.searchTimeout);
       this.searchTimeout = setTimeout(async () => {
         try {
-          const res = await apiClient.get('http://localhost:8000/api/bill-search', {
+          const res = await apiClient.get('/api/bill-search', {
             params: { search: this.searchQuery },
           });
           this.bills = res.data;
@@ -485,7 +485,7 @@ export default {
       if (!confirm('Bạn có chắc muốn xác nhận hóa đơn này?')) return;
       const bill = this.bills[index];
       try {
-        await apiClient.put(`http://localhost:8000/api/bill/${bill.id}`, {
+        await apiClient.put(`/api/bill/${bill.id}`, {
           status: 'handled',
         });
         this.bills[index].status = 'handled';

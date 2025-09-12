@@ -81,7 +81,7 @@ export default {
         params.type = this.filter.type;
       }
       try {
-        const res = await apiClient.get('http://localhost:8000/api/pet', {
+        const res = await apiClient.get('/api/pet', {
           params
         })
         this.pets = res.data
@@ -91,7 +91,7 @@ export default {
     },
     async fetchBreeds() {
       try {
-        const res = await apiClient.get('http://localhost:8000/api/breed', {
+        const res = await apiClient.get('/api/breed', {
           params: {
             type: this.filter.type,
           }
