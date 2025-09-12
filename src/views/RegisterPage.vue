@@ -39,6 +39,7 @@ const handleRegister = async () => {
   }
 
   try {
+    await apiClient.get('/sanctum/csrf-cookie', { withCredentials: true })
     const response = await apiClient.post('/api/register', {
       name: name.value,
       email: email.value,
